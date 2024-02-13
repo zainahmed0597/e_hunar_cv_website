@@ -1,4 +1,5 @@
 import 'package:e_hunar_cv/views/home_page.dart';
+import 'package:e_hunar_cv/widgets/cursor/animated_circle_cursor.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,8 +19,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const AnimatedCircleCursor(
+        child: HomePage(),
+      ),
     );
   }
 }
-

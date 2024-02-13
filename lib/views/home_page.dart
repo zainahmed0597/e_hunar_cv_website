@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/color_palettes.dart';
 import '../utils/strings.dart';
 import '../widgets/button/gradient_button_container.dart';
+import '../widgets/cursor/animated_circle_cursor.dart';
 import '../widgets/icons/padded_icons.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,19 +18,24 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 250, vertical: 30),
         child: Column(
           children: [
-            // Logo here
+            // Top bar and left side area here
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 80,
-                  width: 80,
-                  child: Image.asset(
-                    logoOnly1,
+                // Logo here
+                AnimatedCircleCursorMouseRegion(
+                  child: SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: Image.asset(
+                      logoOnly1,
+                    ),
                   ),
                 ),
+                // Right side widgets
                 Row(
                   children: [
+                    // 4 social media icons here
                     PaddedIcon(
                       fIcon: FontAwesomeIcons.facebookF,
                       color: color3,
@@ -47,17 +53,37 @@ class HomePage extends StatelessWidget {
                       color: color6,
                     ),
                     const SizedBox(width: 20),
-                    GradientButtonContainer(
-                      height: 80,
-                      width: 250,
-                      clr: [color7, color7],
-                      title: downloadCv,
-                      isGradientVertical: false,
-                      overlayColor: Colors.red,
-                      onPressed: () {},
+                    // cv button here
+                    AnimatedCircleCursorMouseRegion(
+                      child: GradientButtonContainer(
+                        height: 80,
+                        width: 250,
+                        clr: [color7, color7],
+                        title: downloadCv,
+                        isGradientVertical: false,
+                        overlayColor: Colors.red,
+                        onPressed: () {},
+                      ),
                     ),
                   ],
                 ),
+              ],
+            ),
+
+            const SizedBox(height: 60),
+            Row(
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: Container(
+                      height: 500,
+                      color: color7,
+                    )),
+                Expanded(
+                    child: Container(
+                  height: 500,
+                  color: color4,
+                )),
               ],
             ),
           ],
